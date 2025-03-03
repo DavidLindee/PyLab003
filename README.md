@@ -50,6 +50,10 @@ Now that you have user inputs ready, you’ll move to handling peer-to-peer comm
   ```python
   # Example
   def chat_task(ctx, pipe, n, group):  # function name is chat_task
+  def get_peer_node(username): #function name is get_peer_node
+  def join_group(node, group): #function name is join_group
+  def chat_task(ctx, pipe, n, group): #function name is chat_task
+  def get_channel(node, group): #function name is get_channel
   ```
   2. List all parameters and what you think they are. Put "UNSURE" if you don't have a guess.
   ```shell
@@ -58,11 +62,15 @@ Now that you have user inputs ready, you’ll move to handling peer-to-peer comm
   pipe: This is a communications pipe polled by ZeroMQ for messages.
   n: This is the peer to peer node my chat app is connected as
   group: This is the peer chat group I wanted to join
+  username: This holds person username
   ```
   3. Note if the function **returns** anything. If it does, note what you believe it returns, and make a final note about what you believe the function may do.
   ```shell
   # Example
   The chat_task method does not return anything, it appears to be the send/recieve manager.
+  The get_peer_node returns n, im assumeing this has something to do with returning nodes
+  The join_group method does not seem to return  anything
+  The get_channel method returns zhelper.zthread_fork(ctx, chat_task, n=node, group=group) im assumeing this returns the messages and usernames from people in the chat, or just returns all the information for the cdhat to function 
   ```
 
 ## Combining the Functions to Create the Peer-to-Peer Chat
